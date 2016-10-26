@@ -1,0 +1,41 @@
+:root {
+  --black: #000;
+  --white: #fff;
+}
+
+body {
+  font: 12px Helvetica, Arial, sans-serif;
+}
+
+a.button {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: 16px;
+  color: red;
+}
+
+p {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+a {
+  font-size: 14px;
+  color: red;
+}
+
+a:hover {
+  color: blue;
+}
+
+.resource {
+  margin-bottom: 10px;
+}
+
+.title {
+  border-bottom: 2px solid blue;
+  text-align: center;
+}
