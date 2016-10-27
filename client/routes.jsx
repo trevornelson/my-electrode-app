@@ -1,7 +1,11 @@
 import React from "react";
-import {Route} from "react-router";
+import {Route, IndexRoute} from "react-router";
 import Home from "./components/home";
+import Calculator from "./components/calculator";
 
 export const routes = (
-  <Route path="/" component={Home}/>
+  <Route>
+    <Route path="/" component={Home}/>
+    <Route path="/calculator" component={Calculator}/>
+  </Route>
 );
