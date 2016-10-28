@@ -1,5 +1,4 @@
 import {combineReducers} from "redux";
-import todos from "./todos";
 import _ from 'lodash';
 
 const checkBox = (store, action) => {
@@ -58,6 +57,23 @@ const calculator = (store, action) => {
       }
   }
 };
+
+const todos = (store, action) => {
+  switch (action.type) {
+    case 'TOGGLE_TODO':
+      return [...store].map((todo) => {
+        if (todo.id === action.payload.id) { todo.completed = !todo.completed; }
+        return todo;
+      });
+    case 'ADD_TODO':
+      return {};
+    default:
+      return [
+        {id: _.uniqueId(), text: 'test todo', completed: false}
+      ];
+  }
+
+}
 
 export default combineReducers({
   checkBox,

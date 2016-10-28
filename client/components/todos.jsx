@@ -1,22 +1,31 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, {PropTypes} from "react";
+import {connect} from "react-redux";
+import _ from "lodash";
 
-import Todo from './todo';
-import {addTodo, editTodo, updateTodo, deleteTodo, toggleTodo} from '../actions/todos';
+import { addTodo, toggleTodo } from "../actions";
+import Todo from "./todo";
+import styles from "../styles/todos.css";
+
 
 class Todos extends React.Component {
-  
-  render() {
-    const props = this.props;
-    const { todos, onDeleteTodo, onEditTodo, onUpdateTodo, onToggleTodo } = props;
 
+  handleKeyPress(e) {
+    e.preventDefault();
+    if (e.keyCode === 13) {
+      addTodo(this.input.value);
+    }
+  }
+
+  render() {
     return (
-      <div>
-        <h1>Todos</h1>
-        <ul className="list-group">
-          { todos.map((todo) => { return <Todo {...todo} onDelete={onDeleteTodo} onEdit={onEditTodo} onUpdate={onUpdateTodo} onToggle={onToggleTodo} /> }) }
-        </ul>
-      </div>
+      <ul className={styles.todoList}>
+        { this.props.todos.map((todo) => {
+          return <Todo {...todo} onToggleTodo={this.props.onToggleTodo} />
+        }) }
+        <input type="text" onKeyDown={_.partial(this.handleKeyPress)} ref={(node) => {
+          this.input = node;
+        }}/>
+      </ul>
     );
   }
 
@@ -36,15 +45,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddTodo: (text) => {
       dispatch(addTodo(text));
-    },
-    onEditTodo: (id, text) => {
-      dispatch(editTodo(id, text));
-    },
-    onUpdateTodo: (id, text) => {
-      dispatch(updateTodo(id, text));
-    },
-    onDeleteTodo: (id) => {
-      dispatch(deleteTodo(id));
     },
     onToggleTodo: (id) => {
       dispatch(toggleTodo(id));

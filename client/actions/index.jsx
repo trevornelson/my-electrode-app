@@ -35,3 +35,17 @@ export const calculateValue = () => {
     type: "CALCULATE_VALUE"
   };
 };
+
+export const toggleTodo = (id) => {
+  return {
+    type: "TOGGLE_TODO",
+    payload: {id: id}
+  };
+}
+
+export const addTodo = (text) => {
+  return {
+    type: "ADD_TODO",
+    payload: {text: text}
+  }
+}
