@@ -12,7 +12,7 @@ class Calculator extends React.Component {
   render() {
     const props = this.props;
     const {first_number, second_number, operator} = props;
-    console.log(first_number, second_number, operator);
+
     return (
       <div>
         <h1>Calculator</h1>

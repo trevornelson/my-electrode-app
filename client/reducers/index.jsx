@@ -1,4 +1,6 @@
 import {combineReducers} from "redux";
+import todos from "./todos";
+import _ from 'lodash';
 
 const checkBox = (store, action) => {
   if (action.type === "TOGGLE_CHECK") {
@@ -42,7 +44,6 @@ const calculator = (store, action) => {
       });
     case 'CALCULATE_VALUE':
       const equation = store.first_number.toString() + ' ' + store.operator + ' ' + store.second_number.toString();
-      console.log(equation);
       const value = eval(equation);
       return {
         first_number: value,
@@ -61,5 +62,6 @@ const calculator = (store, action) => {
 export default combineReducers({
   checkBox,
   number,
-  calculator
+  calculator,
+  todos
 });
